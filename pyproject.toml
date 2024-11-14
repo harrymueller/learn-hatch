@@ -1,0 +1,67 @@
+# Build system configuration
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+# Project metadata
+[project]
+name = "harrymueller_epi_models"
+dynamic = ["version"]
+# dependencies: a list of strings
+dependencies = [
+    "matplotlib",
+]
+
+# A simple summary of the project
+description = "My wonderful Python package - by HM"
+
+
+# Full description of the project.
+# Should be the path to your README file, relative to pyproject.toml
+readme = "README.md"
+
+# The Python version required by the project
+requires-python = ">=3.8"
+
+# The license of your project.
+# Can be provided as a file or a text description.
+# Discussed in the lesson on publishing
+license = {file = "LICENSE"}
+
+# Authors / maintainers
+# Each entry can have a name and/or an email
+authors = [
+    {name = "Harry Mueller", email = "harry@mueller.com.au"}, #{name = "My Friend", email = "their.email@email.net"},
+]
+
+# Project URLs
+[project.urls]
+homepage = "https://github.com/harrymueller/learn-hatch"
+documentation = "https://github.com/harrymueller/learn-hatch"
+repository = "https://github.com/harrymueller/learn-hatch"
+
+# Hatch build configuration
+[tool.hatch.build]
+source = "src"
+
+# Add entry points
+[project.scripts]
+epi_models = "harrymueller_epi_models.__main__:main"
+
+[project.optional-dependencies]
+test = [
+    "pytest >= 5.0.0",
+]
+
+# Hatch versioning configuration
+[tool.hatch.version]
+source = "vcs"
+
+# Version control system (VCS) versioning
+[tool.hatch.version.vcs]
+tag-pattern = "v*"  # Git tags starting with 'v' will be used for versioning
+fallback-version = "0.0.0"
+
+# Version file location for VCS
+[tool.hatch.build.hooks.vcs]
+version-file = "src/harrymueller_epi_models/_version.py"
